@@ -73,3 +73,4 @@ RUN mkdir -p /tmp/ngx_openresty \
  && cd $NGINX_PREFIX \
  && rm -rf conf html
 
+ADD mo /bin/mo
