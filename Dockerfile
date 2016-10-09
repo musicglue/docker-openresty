@@ -78,4 +78,5 @@ RUN mkdir -p /tmp/ngx_openresty \
  && rm -rf conf html
 
 ADD bin /bin/
+ADD conf /conf/
 ENTRYPOINT ["/bin/pid1"]
