@@ -5,12 +5,16 @@ ENV OPENRESTY_VERSION=1.11.2.1 \
     OPENRESTY_PREFIX=/app \
     NGINX_PREFIX=/app/nginx \
     VAR_PREFIX=/app/var/nginx \
+    NODE_ENV=production \
     PATH=/app/bin:/app/nginx/bin:$PATH
 
 RUN apt update \
  && apt upgrade -y \
  && apt dist-upgrade -y \
  && apt install -y openssl libssl-dev libpcre3-dev libpcre++-dev curl wget build-essential unzip
+
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
+  && apt install -y nodejs
 
 WORKDIR $OPENRESTY_PREFIX
 RUN mkdir -p /tmp/ngx_openresty \
@@ -73,4 +77,5 @@ RUN mkdir -p /tmp/ngx_openresty \
  && cd $NGINX_PREFIX \
  && rm -rf conf html
 
-ADD mo /bin/mo
+ADD bin /bin/
+ENTRYPOINT ["/bin/pid1"]

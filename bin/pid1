@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+const http = require('http');
+const process = require('process');
+const spawn = require('child_process').spawn;
+
+const requestOpts = {
+  protocol: 'http:',
+  socketPath: '/tmp/management.sock',
+  method: 'POST',
+  path: '/control/shutdown',
+};
+
+process.on('SIGINT', () => {
+  console.log('Received SIGINT, invaldating');
+  http.get(requestOpts, res => {
+    console.log(`Received response as: ${res.statusCode}`);
+    process.exit(0);
+  }, err => {
+    console.trace(err);
+    process.exit(1);
+  });
+});
+
+const command = process.argv[2]; // first two are node and this script
+const args = process.argv.slice(3); // remainder are script args
+
+const child = spawn(command, args, {
+  env: process.env,
+  stdio: 'inherit',
+});
+
+child.on('error', err => {
+  console.trace(err);
+  process.exit(1);
+});
