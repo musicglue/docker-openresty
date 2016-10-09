@@ -6,7 +6,8 @@ ENV OPENRESTY_VERSION=1.11.2.1 \
     NGINX_PREFIX=/app/nginx \
     VAR_PREFIX=/app/var/nginx \
     NODE_ENV=production \
-    PATH=/app/bin:/app/nginx/bin:$PATH
+    PATH=/app/bin:/app/nginx/bin:$PATH \
+    MANAGEMENT_CONFIG_PATH=/conf/management.conf
 
 RUN apt update \
  && apt upgrade -y \
