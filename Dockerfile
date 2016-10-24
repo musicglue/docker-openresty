@@ -40,6 +40,7 @@ RUN mkdir -p /tmp/ngx_openresty \
     --with-http_ssl_module \
     --with-http_realip_module \
     --with-http_v2_module \
+    --with-stream \
     --without-http_split_clients_module \
     --without-http_upstream_ip_hash_module \
     --without-http_userid_module \
