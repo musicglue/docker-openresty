@@ -78,6 +78,7 @@ RUN mkdir -p /tmp/ngx_openresty \
  && cd $NGINX_PREFIX \
  && rm -rf conf html
 
+RUN mkdir -p /app/nginx/conf/server.d
 ADD bin /bin/
-ADD conf /conf/
+ADD conf/ /app/nginx/conf/server.d/
 ENTRYPOINT ["/bin/pid1"]
