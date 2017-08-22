@@ -68,7 +68,7 @@ RUN mkdir -p /tmp/ngx_openresty \
  && cd luarocks-* \
  && ./configure --prefix=$OPENRESTY_PREFIX/luajit \
       --with-lua=$OPENRESTY_PREFIX/luajit/ \
-      --lua-suffix=jit-2.1.0-beta2 \
+      --lua-suffix=jit-2.1.0-beta3 \
       --with-lua-include=$OPENRESTY_PREFIX/luajit/include/luajit-2.1 \
  && make \
  && make install \
