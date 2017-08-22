@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-ENV OPENRESTY_VERSION=1.11.2.3 \
+ENV OPENRESTY_VERSION=1.11.2.5 \
     LUAROCKS_VERSION=2.3.0 \
     OPENRESTY_PREFIX=/app \
     NGINX_PREFIX=/app/nginx \
@@ -14,7 +14,7 @@ RUN apt update \
  && apt dist-upgrade -y \
  && apt install -y openssl libssl-dev libpcre3-dev libpcre++-dev curl wget build-essential unzip
 
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
   && apt install -y nodejs
 
 WORKDIR $OPENRESTY_PREFIX
